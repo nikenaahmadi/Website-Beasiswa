@@ -1,0 +1,290 @@
+.header {
+    align-items: center;
+    padding: 20px;
+    background-color: #F1C045;
+    text-align: center;
+    color: #A6171C;
+}
+
+.btn-teks {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #A6171C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-teks:hover {
+    background-color: #7f1015;
+}
+
+.dashboard-content {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    color: #A6171C;
+    text-align: center;
+}
+
+.pendaftar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #A6171C;
+}
+
+.pendaftar form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pendaftar button {
+    padding: 10px 20px;
+    background-color: #A6171C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pendaftar button:hover {
+    background-color: #7f1015;
+}
+
+#tabel-pendaftar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#tabel-pendaftar thead {
+    background-color: #A6171C;
+    color: white;
+}
+
+#tabel-pendaftar th,
+#tabel-pendaftar td {
+    padding: 12px 15px;
+    border: 1 px solid #ddd;
+    text-align: left;
+}
+
+#tabel-pendaftar tbody tr:nth-child(even) {
+    background-color: #F9F9F9;
+}
+
+#tabel-pendaftar tbody tr:hover {
+    background-color: #F1E0A0;
+}
+
+.btn-lihat {
+    padding: 6px 12px;
+    background-color: #A6171C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-lihat:hover {
+    background-color: #7F1015;
+}
+
+.btn-hapus {
+    padding: 6px 12px;
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.btn-hapus:hover {
+    background-color: #922b21;
+}
+
+.lolos-beasiswa h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #A6171C;
+}
+
+.lolos-beasiswa form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.lolos-beasiswa button {
+    padding: 10px 20px;
+    background-color: #A6171C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.lolos-beasiswa button:hover {
+    background-color: #7f1015;
+}
+
+/* MODAL OVERLAY */
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* MODAL BOX */
+#modal-box {
+    background-color: white;
+    width: 600px;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* MODAL HEADER */
+#modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #A6171C;
+    padding-bottom: 10px;
+}
+
+#modal-header h2 {
+    color: #A6171C;
+}
+
+#modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #A6171C;
+}
+
+#modal-close:hover {
+    color: #7f1015;
+}
+
+/* MODAL BODY */
+#modal-body h3 {
+    color: #A6171C;
+    margin: 15px 0 8px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* TABEL DETAIL */
+.tabel-detail {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.tabel-detail td {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+}
+
+.tabel-detail td:first-child {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    width: 45%;
+    color: #333;
+}
+
+.tabel-detail td:last-child {
+    color: #555;
+}
+
+/* TOMBOL GENERATE */
+#btn-generate {
+    padding: 8px 14px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+#btn-generate:hover {
+    background-color: #1e8449;
+}
+
+/* SECTION LOLOS BEASISWA */
+.lolos-beasiswa {
+    padding: 20px;
+    margin: 20px;
+    background-color: #eafaf1;
+    border-radius: 8px;
+    border: 2px solid #27ae60;
+}
+
+.lolos-beasiswa h2 {
+    color: #1e8449;
+    margin-bottom: 15px;
+}
+
+#tabel-lolos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+#tabel-lolos thead {
+    background-color: #27ae60;
+    color: white;
+}
+
+#tabel-lolos th,
+#tabel-lolos td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#tabel-lolos tbody tr:nth-child(even) {
+    background-color: #d5f5e3;
+}
+
+#tabel-lolos tbody tr:hover {
+    background-color: #a9dfbf;
+}
+
+.btn-hapus-lolos {
+    padding: 6px 12px;
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-hapus-lolos:hover {
+    background-color: #922b21;
+}

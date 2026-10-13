@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+.header {
+    background-color: #F1C045;
+    padding: 30px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h1 {
+    color: #A6171C;
+    font-size: 18px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* BUTTON TEKS */
+.btn-teks {
+    background: none;
+    border: none;
+    color: #A6171C;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* HAMBURGER */
+.hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #A6171C;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #D6D0C5;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar a {
+    display: block;
+    color: #A6171C;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-bottom: 1px solid #444;
+}
+
+.sidebar a:hover {
+    background-color: #F1C045;
+}
+
+.btn-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #A6171C;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn-close:hover {
+    color: #FF4D4D;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center; /* center horizontally */
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.syarat {
+    padding: 20px;
+    background-color: #D6D0C5;
+    margin: 20px;
+    border-radius: 8px;
+    color: #A6171C;
+}
+
+.berkas {
+    padding: 20px;
+    background-color: #D6D0C5;
+    margin: 20px;
+    border-radius: 8px;
+    color: #A6171C;
+}
+
+.formulir {
+    padding: 20px;
+    background-color: #F1C045;
+    margin: 20px;
+    border-radius: 8px;
+    color: #A6171C;
+}
+
+.formulir form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 30px;
+}
+
+.formulir form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.formulir form input[type="text"],
+.formulir form input[type="email"],
+.formulir form input[type="tel"],
+.formulir form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.formulir form .field {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulir form .submit-btn {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.formulir form .submit-btn input {
+    padding: 10px 30px;
+    background-color: #A6171C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.formulir form .submit-btn input:hover {
+    background-color: #7f1015;
+}
+
+.unggah-berkas {
+    padding: 20px;
+    background-color: #D6D0C5;
+    margin: 20px;
+    border-radius: 8px;
+    color: #A6171C;
+}
+
+.unggah-berkas form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 30px;
+}
+
+.unggah-berkas form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.unggah-berkas form input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.unggah-berkas form .submit-btn {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.unggah-berkas form .submit-btn input {
+    padding: 10px 30px;
+    background-color: #A6171C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.unggah-berkas form .submit-btn input:hover {
+    background-color: #7f1015;
+}
+
+.footer {
+    background-color: #F1C045;
+    padding: 30px 35px;
+    align-items: center;
+}
+
+.footer pre {
+    color: #A6171C;
+    font-size: 14px;
+    white-space: pre-wrap; /* Membuat teks tetap dalam satu paragraf */
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.footer p {
+    color: #A6171C;
+    font-size: 14px;
+    text-align: center;
+}

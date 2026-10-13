@@ -1,0 +1,56 @@
+.header {
+    align-items: center;
+    padding: 20px;
+    background-color: #F1C045;
+    color: #A6171C;
+    text-align: center;
+}
+
+.login h2 {
+    font-size: 28px;
+    margin: 0;
+    text-align: center;
+    color: #A6171C;
+    margin-top: 15px;
+}
+
+#form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+}
+
+#form-login input[type="text"],
+#form-login input[type="password"] {
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: black solid 1px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#form-login input[type="submit"] {
+    width: 320px;
+    padding: 10px;
+    background-color: #A6171C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#btn-kembali {
+    width: 320px;
+    padding: 10px;
+    background-color: #F1C045;
+    color: #A6171C;
+    border: black solid 1px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+

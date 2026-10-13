@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin_dashboard.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+        <button class="btn-teks" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="dashboard-content">
+        <h2>Selamat Datang, Admin!</h2>
+        <p>Anda berhasil login.</p>
+    </div>
+
+    <div class="pendaftar">
+        <h2>Daftar Pendaftar Beasiswa</h2>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Cari pendaftar...">
+            <button type="submit">Cari</button>
+        </form>
+        <table id="tabel-pendaftar">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" style="text-align:center;">Belum ada data</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- SECTION LOLOS BEASISWA -->
+<div class="lolos-beasiswa">
+    <h2>Daftar Penerima Beasiswa</h2>
+    <table id="tabel-lolos">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Kode Pendaftar</th>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Universitas</th>
+                <th>IPK</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" style="text-align:center;">Belum ada penerima beasiswa.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- MODAL DETAIL PENDAFTAR -->
+<div id="modal-overlay" style="display:none;">
+    <div id="modal-box">
+        <div id="modal-header">
+            <h2>Detail Pendaftar</h2>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <button id="btn-generate">Generate Kode Pendaftar</button>
+                <button id="modal-close" onclick="tutupModal()">&#10005;</button>
+            </div>
+        </div>
+        <div id="modal-body">
+
+            <h3>Data Diri</h3>
+            <table class="tabel-detail">
+                <tr><td>Nama Lengkap</td><td id="d-nama"></td></tr>
+                <tr><td>NIM</td><td id="d-nim"></td></tr>
+                <tr><td>Email</td><td id="d-email"></td></tr>
+                <tr><td>Nomor Telepon</td><td id="d-telepon"></td></tr>
+                <tr><td>Universitas</td><td id="d-universitas"></td></tr>
+                <tr><td>Fakultas</td><td id="d-fakultas"></td></tr>
+                <tr><td>Jurusan</td><td id="d-jurusan"></td></tr>
+                <tr><td>IPK</td><td id="d-ipk"></td></tr>
+                <tr><td>Alamat</td><td id="d-alamat"></td></tr>
+            </table>
+
+            <h3>Data Rekening</h3>
+            <table class="tabel-detail">
+                <tr><td>Nomor Rekening</td><td id="d-norek"></td></tr>
+                <tr><td>Nama Bank</td><td id="d-bank"></td></tr>
+                <tr><td>Nama Pemilik Rekening</td><td id="d-pemilik"></td></tr>
+            </table>
+
+            <h3>Berkas yang Diunggah</h3>
+            <table class="tabel-detail">
+                <tr><td>KTP</td><td id="d-ktp"></td></tr>
+                <tr><td>KTM</td><td id="d-ktm"></td></tr>
+                <tr><td>KK</td><td id="d-kk"></td></tr>
+                <tr><td>SK Aktif Kuliah</td><td id="d-skaktif"></td></tr>
+                <tr><td>SK Tidak Menerima Beasiswa</td><td id="d-sktidak"></td></tr>
+                <tr><td>SKTM</td><td id="d-sktm"></td></tr>
+                <tr><td>Transkrip Nilai</td><td id="d-transkrip"></td></tr>
+                <tr><td>KRS</td><td id="d-krs"></td></tr>
+                <tr><td>Pas Foto</td><td id="d-foto"></td></tr>
+                <tr><td>Invoice UKT</td><td id="d-ukt"></td></tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+    <script>
+        function logout() {
+            window.location.href = 'admin_login.html';
+        }
+    </script>
+    <script>
+    // TAMPILKAN DATA DI TABEL
+    function tampilkanData() {
+        const dataPendaftar = JSON.parse(localStorage.getItem('pendaftar')) || [];
+        const tbody = document.querySelector('#tabel-pendaftar tbody');
+
+        if (dataPendaftar.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Belum ada data pendaftar.</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = '';
+        dataPendaftar.forEach((pendaftar, index) => {
+            const baris = document.createElement('tr');
+            baris.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${pendaftar.nim}</td>
+                <td>${pendaftar.nama}</td>
+                <td>
+                    <button class="btn-lihat" onclick="lihatBerkas(${pendaftar.id})">Lihat Berkas</button>
+                    <button class="btn-hapus" onclick="hapusData(${pendaftar.id})">Hapus</button>
+                </td>
+            `;
+            tbody.appendChild(baris);
+        });
+    }
+
+    // LIHAT DETAIL BERKAS
+    function lihatBerkas(id) {
+    const dataPendaftar = JSON.parse(localStorage.getItem('pendaftar')) || [];
+    const pendaftar = dataPendaftar.find(p => p.id === id);
+
+    if (!pendaftar) return;
+
+    // isi data diri
+    document.getElementById('d-nama').textContent = pendaftar.nama;
+    document.getElementById('d-nim').textContent = pendaftar.nim;
+    document.getElementById('d-email').textContent = pendaftar.email;
+    document.getElementById('d-telepon').textContent = pendaftar.telepon;
+    document.getElementById('d-universitas').textContent = pendaftar.universitas;
+    document.getElementById('d-fakultas').textContent = pendaftar.fakultas;
+    document.getElementById('d-jurusan').textContent = pendaftar.jurusan;
+    document.getElementById('d-ipk').textContent = pendaftar.ipk;
+    document.getElementById('d-alamat').textContent = pendaftar.alamat;
+
+    // isi data rekening
+    document.getElementById('d-norek').textContent = pendaftar.norek;
+    document.getElementById('d-bank').textContent = pendaftar.bank;
+    document.getElementById('d-pemilik').textContent = pendaftar.pemilikRekening;
+
+    // isi berkas
+    const berkas = pendaftar.berkas;
+    if (berkas) {
+        document.getElementById('d-ktp').textContent = berkas.ktp;
+        document.getElementById('d-ktm').textContent = berkas.ktm;
+        document.getElementById('d-kk').textContent = berkas.kk;
+        document.getElementById('d-skaktif').textContent = berkas.skAktif;
+        document.getElementById('d-sktidak').textContent = berkas.skTidakBeasiswa;
+        document.getElementById('d-sktm').textContent = berkas.sktm;
+        document.getElementById('d-transkrip').textContent = berkas.transkrip;
+        document.getElementById('d-krs').textContent = berkas.krs;
+        document.getElementById('d-foto').textContent = berkas.foto;
+        document.getElementById('d-ukt').textContent = berkas.ukt;
+    } else {
+        // jika belum unggah berkas, tampilkan tanda strip
+        ['d-ktp','d-ktm','d-kk','d-skaktif','d-sktidak',
+         'd-sktm','d-transkrip','d-krs','d-foto','d-ukt'].forEach(id => {
+            document.getElementById(id).textContent = 'Belum diunggah';
+        });
+    }
+
+    // tampilkan modal
+    document.getElementById('modal-overlay').style.display = 'flex';
+}
+
+function tutupModal() {
+    document.getElementById('modal-overlay').style.display = 'none';
+}
+
+// tutup modal jika klik di luar modal box
+document.getElementById('modal-overlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('modal-overlay')) {
+        tutupModal();
+    }
+});
+    //FUNGSI HAPUS DATA
+    function hapusData(id) {
+    const konfirmasi = confirm('Apakah Anda yakin ingin menghapus data ini?');
+    if (!konfirmasi) return;
+
+    let dataPendaftar = JSON.parse(localStorage.getItem('pendaftar')) || [];
+    dataPendaftar = dataPendaftar.filter(p => p.id !== id);
+    localStorage.setItem('pendaftar', JSON.stringify(dataPendaftar));
+
+    alert('Data berhasil dihapus.');
+    tampilkanData(); // refresh tabel
+    }
+
+    function logout() {
+        window.location.href = 'admin_login.html';
+    }
+
+    tampilkanData();
+</script>
+
+<script src="admin.js"></script>
+</body>
+</html>

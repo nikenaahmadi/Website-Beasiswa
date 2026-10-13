@@ -1,0 +1,7 @@
+ruby = #A6171C
+natural = #D6D0C5
+sunny = #F1C045
+
+hamburger menu isinya: struktur organisasi, layanan, admin, pengumuman
+
+connect cloud database
